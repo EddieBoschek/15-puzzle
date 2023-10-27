@@ -5,6 +5,7 @@ public class Main {
     public static void testMetod() {
 
         int x = 5;
+        int y = 10;
 
         String hej = "Hallå!";
 
