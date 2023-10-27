@@ -8,7 +8,7 @@ public class Main {
 
         String hej = "Hallå!";
 
-        int n = 2;
+        int n = 10;
     }
 
     public static void main(String[] args) {
