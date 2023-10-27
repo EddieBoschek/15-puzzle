@@ -5,11 +5,10 @@ public class Main {
     public static void testMetod() {
 
         int x = 5;
-        System.out.print(x);
 
         String hej = "Hallå!";
 
-        int n = 9;
+        int n = 2;
     }
 
     public static void main(String[] args) {
