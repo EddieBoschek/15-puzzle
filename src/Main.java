@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,6 @@ public class Main extends JFrame implements ActionListener {
     JPanel eastPanel = new JPanel();
     JPanel northPanel = new JPanel();
     JPanel southPanel = new JPanel();
-    JPanel shufflePanel = new JPanel();
 
     JButton shuffle = new JButton("Shuffle");
     JButton b0 = new JButton("1");
@@ -39,6 +39,7 @@ public class Main extends JFrame implements ActionListener {
         this.add(masterPanel);
         masterPanel.setLayout(new BorderLayout());
 
+
         /*b0.setActionCommand("0"); b1.setActionCommand("1");
         b2.setActionCommand("2"); b3.setActionCommand("3");
         b4.setActionCommand("4"); b5.setActionCommand("5");
@@ -48,7 +49,11 @@ public class Main extends JFrame implements ActionListener {
         b12.setActionCommand("12"); b13.setActionCommand("13");
         b14.setActionCommand("14"); b15.setActionCommand("15");*/
 
+        LineBorder border = new LineBorder(Color.RED, 10);
+
         gameBoard.setLayout(new GridLayout(4,4));
+        gameBoard.setBackground(Color.RED);
+        gameBoard.setBorder(border);
         gameBoard.add(b0); gameBoard.add(b1); gameBoard.add(b2); gameBoard.add(b3);
         gameBoard.add(b4); gameBoard.add(b5); gameBoard.add(b6); gameBoard.add(b7);
         gameBoard.add(b8); gameBoard.add(b9); gameBoard.add(b10); gameBoard.add(b11);
@@ -58,6 +63,11 @@ public class Main extends JFrame implements ActionListener {
         eastPanel.setPreferredSize(new Dimension(100, 100));
         northPanel.setPreferredSize(new Dimension(100, 100));
         southPanel.setPreferredSize(new Dimension(100, 100));
+
+        westPanel.setBackground(Color.BLACK);
+        eastPanel.setBackground(Color.BLACK);
+        northPanel.setBackground(Color.BLACK);
+        southPanel.setBackground(Color.BLACK);
 
         northPanel.setLayout(new GridBagLayout());
 
