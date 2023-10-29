@@ -12,7 +12,7 @@ public class Main extends JFrame implements ActionListener {
     JPanel northPanel = new JPanel();
     JPanel southPanel = new JPanel();
 
-    JButton shuffle = new JButton("Shuffle");
+    JButton shuffle = new JButton("Nytt spel");
     JButton b0 = new JButton("1");
     JButton b1 = new JButton("2");
     JButton b2 = new JButton("3");
