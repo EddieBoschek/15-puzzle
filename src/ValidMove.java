@@ -6,8 +6,8 @@ import java.awt.event.ActionEvent;
 public class ValidMove {
 
 
-    public static int check(ActionEvent e, int blankTilePosition) {
-        int valid = -1;
+    public static boolean check(ActionEvent e, int blankTilePosition) {
+        boolean valid;
         JButton pressedButton = (JButton)e.getSource();
         JPanel gameBoard = (JPanel)pressedButton.getParent();
         int x = pressedButton.getBounds().x;
@@ -16,13 +16,13 @@ public class ValidMove {
 
         try {
             switch (blankTilePosition) {
-                case gameBoard.getComponent(buttonPosition-1) -> valid = buttonPosition-1;
-                case gameBoard.getComponent(buttonPosition+1) -> valid = buttonPosition+1;
-                case gameBoard.getComponent(buttonPosition-4) -> valid = buttonPosition-4;
-                case gameBoard.getComponent(buttonPosition+4) -> valid = buttonPosition+4;
+                case gameBoard.getComponent(buttonPosition-1) -> valid = true;
+                case gameBoard.getComponent(buttonPosition+1) -> valid = true;
+                case gameBoard.getComponent(buttonPosition-4) -> valid = true;
+                case gameBoard.getComponent(buttonPosition+4) -> valid = true;
             }
         } catch (Exception exc) {
-            exc.printStackTrace()
+            exc.printStackTrace();
         }
 
         return valid;
