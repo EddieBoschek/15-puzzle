@@ -10,6 +10,7 @@ public class Main extends JFrame implements ActionListener {
     JPanel eastPanel = new JPanel();
     JPanel northPanel = new JPanel();
     JPanel southPanel = new JPanel();
+    JPanel shufflePanel = new JPanel();
 
     JButton shuffle = new JButton("Shuffle");
     JButton b0 = new JButton("1");
@@ -58,7 +59,15 @@ public class Main extends JFrame implements ActionListener {
         northPanel.setPreferredSize(new Dimension(100, 100));
         southPanel.setPreferredSize(new Dimension(100, 100));
 
-        northPanel.add(shuffle);
+        northPanel.setLayout(new GridBagLayout());
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.insets = new Insets(0, 0, 0, 0);
+        constraints.anchor = GridBagConstraints.CENTER;
+
+        northPanel.add(shuffle, constraints);
 
         masterPanel.add(gameBoard, BorderLayout.CENTER);
         masterPanel.add(westPanel, BorderLayout.WEST);
