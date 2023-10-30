@@ -1,4 +1,5 @@
 import sprint3.Inlamningsuppgift_3.src.Move;
+import sprint3.Inlamningsuppgift_3.src.WinCondition;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -133,6 +134,8 @@ public class Main extends JFrame implements ActionListener {
 
         if (valid)
             blankTilePosition = Move.makeMove(ae, blankTilePosition);
+
+        WinCondition.checkIfMet(gameBoard);
 
 
 //        if (ae.getSource() == b0) {
