@@ -119,6 +119,7 @@ public class Main extends JFrame implements ActionListener {
         b13.addActionListener(this);
         b14.addActionListener(this);
         b15.addActionListener(this);
+        shuffle.addActionListener(this);
 
         setSize(600, 600);
         //pack();
@@ -132,11 +133,27 @@ public class Main extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == shuffle) {
+            //System.out.println("shuffle");
+            int[] array = Shuffle.shuffle();
+            int i = 0;
+            for (Component component : gameBoard.getComponents()) {
+                if (component instanceof JButton) {
+                    JButton button = (JButton) component;
+                    button.setText(Integer.toString(array[i]));
+                    button.revalidate();
+                    button.repaint();
+                    i++;
+                }
 
-        valid = Move.validMoveCheck(ae, blankTilePosition);
+            }
+        } else {
 
-        if (valid)
-            blankTilePosition = Move.makeMove(ae, blankTilePosition);
+            valid = Move.validMoveCheck(ae, blankTilePosition);
+
+            if (valid)
+                blankTilePosition = Move.makeMove(ae, blankTilePosition);
+        }
     }
 
     public static void main(String[] args) {
