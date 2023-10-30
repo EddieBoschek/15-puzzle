@@ -32,7 +32,7 @@ public class Main extends JFrame implements ActionListener {
     JButton b14 = new JButton("15");
     JButton b15 = new JButton();
 
-    JLabel gameStatus = new JLabel();
+    JLabel gameStatus = new JLabel("Grattis, du vann!");
 
     public Main() {
 
@@ -40,7 +40,6 @@ public class Main extends JFrame implements ActionListener {
 
         this.add(masterPanel);
         masterPanel.setLayout(new BorderLayout());
-
 
         /*b0.setActionCommand("0"); b1.setActionCommand("1");
         b2.setActionCommand("2"); b3.setActionCommand("3");
@@ -93,6 +92,11 @@ public class Main extends JFrame implements ActionListener {
 
         northPanel.add(shuffle, constraints);
 
+        southPanel.setLayout(new GridBagLayout());
+        gameStatus.setForeground(Color.GREEN);
+        gameStatus.setVisible(false);
+        southPanel.add(gameStatus, constraints);
+
         masterPanel.add(gameBoard, BorderLayout.CENTER);
         masterPanel.add(westPanel, BorderLayout.WEST);
         masterPanel.add(eastPanel, BorderLayout.EAST);
@@ -133,41 +137,6 @@ public class Main extends JFrame implements ActionListener {
 
         if (valid)
             blankTilePosition = Move.makeMove(ae, blankTilePosition);
-
-
-//        if (ae.getSource() == b0) {
-//            b0.getText();
-//        } else if (ae.getSource() == b1) {
-//            b1.getText();
-//        } else if (ae.getSource() == b2) {
-//            b2.getText();
-//        } else if (ae.getSource() == b3) {
-//            b3.getText();
-//        } else if (ae.getSource() == b4) {
-//            b4.getText();
-//        } else if (ae.getSource() == b5) {
-//            b5.getText();
-//        } else if (ae.getSource() == b6) {
-//            b6.getText();
-//        } else if (ae.getSource() == b7) {
-//            b7.getText();
-//        } else if (ae.getSource() == b8) {
-//            b8.getText();
-//        } else if (ae.getSource() == b9) {
-//            b9.getText();
-//        } else if (ae.getSource() == b10) {
-//            b10.getText();
-//        } else if (ae.getSource() == b11) {
-//            b11.getText();
-//        } else if (ae.getSource() == b12) {
-//            b12.getText();
-//        } else if (ae.getSource() == b13) {
-//            b13.getText();
-//        } else if (ae.getSource() == b14) {
-//            b14.getText();
-//        } else {
-//            b15.getText();
-//        }
     }
 
     public static void main(String[] args) {
