@@ -25,7 +25,7 @@ public class Move {
             rightButton = buttonPosition + 1;
         if (y != 0)
             upButton = buttonPosition - 4;
-        if (x != 0)
+        if (y != 3)
             downButton = buttonPosition + 4;
 
         int[] buttonArray = {leftButton,rightButton,upButton,downButton};
@@ -34,11 +34,26 @@ public class Move {
             if (button == blankTilePosition)
                 valid = true;
 
-
-
         //tillfällig print
         System.out.println(x + " " + y + " " +  buttonPosition + " " + valid);
 
         return valid;
+    }
+    public static int makeMove(ActionEvent e, int blankTilePosition) {
+        JButton pressedButton = (JButton) e.getSource();
+        JPanel gameBoard = (JPanel) pressedButton.getParent();
+        JButton blankTile = (JButton) gameBoard.getComponent(blankTilePosition);
+
+        int x = (pressedButton.getBounds().x-10)/90;
+        int y = (pressedButton.getBounds().y-10)/84;
+        int pressedButtonPosition = 4 * y + x;
+
+        blankTile.setText(pressedButton.getText());
+        blankTile.setVisible(true);
+        pressedButton.setVisible(false);
+
+        blankTilePosition = pressedButtonPosition;
+
+        return blankTilePosition;
     }
 }

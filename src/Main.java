@@ -53,13 +53,25 @@ public class Main extends JFrame implements ActionListener {
 
         LineBorder border = new LineBorder(Color.RED, 10);
 
-        gameBoard.setLayout(new GridLayout(4,4));
+        gameBoard.setLayout(new GridLayout(4, 4));
         gameBoard.setBackground(Color.RED);
         gameBoard.setBorder(border);
-        gameBoard.add(b0); gameBoard.add(b1); gameBoard.add(b2); gameBoard.add(b3);
-        gameBoard.add(b4); gameBoard.add(b5); gameBoard.add(b6); gameBoard.add(b7);
-        gameBoard.add(b8); gameBoard.add(b9); gameBoard.add(b10); gameBoard.add(b11);
-        gameBoard.add(b12); gameBoard.add(b13); gameBoard.add(b14); gameBoard.add(b15);
+        gameBoard.add(b0);
+        gameBoard.add(b1);
+        gameBoard.add(b2);
+        gameBoard.add(b3);
+        gameBoard.add(b4);
+        gameBoard.add(b5);
+        gameBoard.add(b6);
+        gameBoard.add(b7);
+        gameBoard.add(b8);
+        gameBoard.add(b9);
+        gameBoard.add(b10);
+        gameBoard.add(b11);
+        gameBoard.add(b12);
+        gameBoard.add(b13);
+        gameBoard.add(b14);
+        gameBoard.add(b15);
 
         westPanel.setPreferredSize(new Dimension(100, 100));
         eastPanel.setPreferredSize(new Dimension(100, 100));
@@ -87,14 +99,22 @@ public class Main extends JFrame implements ActionListener {
         masterPanel.add(northPanel, BorderLayout.NORTH);
         masterPanel.add(southPanel, BorderLayout.SOUTH);
 
-        b0.addActionListener(this); b1.addActionListener(this);
-        b2.addActionListener(this); b3.addActionListener(this);
-        b4.addActionListener(this); b5.addActionListener(this);
-        b6.addActionListener(this); b7.addActionListener(this);
-        b8.addActionListener(this); b9.addActionListener(this);
-        b10.addActionListener(this); b11.addActionListener(this);
-        b12.addActionListener(this); b13.addActionListener(this);
-        b14.addActionListener(this); b15.addActionListener(this);
+        b0.addActionListener(this);
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+        b5.addActionListener(this);
+        b6.addActionListener(this);
+        b7.addActionListener(this);
+        b8.addActionListener(this);
+        b9.addActionListener(this);
+        b10.addActionListener(this);
+        b11.addActionListener(this);
+        b12.addActionListener(this);
+        b13.addActionListener(this);
+        b14.addActionListener(this);
+        b15.addActionListener(this);
 
         setSize(600, 600);
         //pack();
@@ -105,10 +125,15 @@ public class Main extends JFrame implements ActionListener {
 
     int blankTilePosition = 15;
     boolean valid;
+
     @Override
     public void actionPerformed(ActionEvent ae) {
 
-        valid = Move.validMoveCheck(ae,blankTilePosition);
+        valid = Move.validMoveCheck(ae, blankTilePosition);
+
+        if (valid)
+            blankTilePosition = Move.makeMove(ae, blankTilePosition);
+
 
 //        if (ae.getSource() == b0) {
 //            b0.getText();
