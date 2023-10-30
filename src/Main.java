@@ -41,15 +41,6 @@ public class Main extends JFrame implements ActionListener {
         this.add(masterPanel);
         masterPanel.setLayout(new BorderLayout());
 
-        /*b0.setActionCommand("0"); b1.setActionCommand("1");
-        b2.setActionCommand("2"); b3.setActionCommand("3");
-        b4.setActionCommand("4"); b5.setActionCommand("5");
-        b6.setActionCommand("6"); b7.setActionCommand("7");
-        b8.setActionCommand("8"); b9.setActionCommand("9");
-        b10.setActionCommand("10"); b11.setActionCommand("11");
-        b12.setActionCommand("12"); b13.setActionCommand("13");
-        b14.setActionCommand("14"); b15.setActionCommand("15");*/
-
         LineBorder border = new LineBorder(Color.RED, 10);
 
         gameBoard.setLayout(new GridLayout(4, 4));
