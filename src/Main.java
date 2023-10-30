@@ -141,11 +141,13 @@ public class Main extends JFrame implements ActionListener {
                 if (component instanceof JButton) {
                     JButton button = (JButton) component;
                     button.setText(Integer.toString(array[i]));
+                    button.setVisible(true);
                     button.revalidate();
                     button.repaint();
                     i++;
                 }
-
+                b15.setVisible(false);
+                blankTilePosition = 15;
             }
         } else {
 
