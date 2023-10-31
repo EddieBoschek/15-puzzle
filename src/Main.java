@@ -42,15 +42,6 @@ public class Main extends JFrame implements ActionListener {
         this.add(masterPanel);
         masterPanel.setLayout(new BorderLayout());
 
-        /*b0.setActionCommand("0"); b1.setActionCommand("1");
-        b2.setActionCommand("2"); b3.setActionCommand("3");
-        b4.setActionCommand("4"); b5.setActionCommand("5");
-        b6.setActionCommand("6"); b7.setActionCommand("7");
-        b8.setActionCommand("8"); b9.setActionCommand("9");
-        b10.setActionCommand("10"); b11.setActionCommand("11");
-        b12.setActionCommand("12"); b13.setActionCommand("13");
-        b14.setActionCommand("14"); b15.setActionCommand("15");*/
-
         LineBorder border = new LineBorder(Color.RED, 10);
 
         gameBoard.setLayout(new GridLayout(4, 4));
@@ -161,41 +152,6 @@ public class Main extends JFrame implements ActionListener {
             if (WinCondition.checkIfMet(gameBoard)) {
                 gameStatus.setVisible(true);
             }
-
-
-//        if (ae.getSource() == b0) {
-//            b0.getText();
-//        } else if (ae.getSource() == b1) {
-//            b1.getText();
-//        } else if (ae.getSource() == b2) {
-//            b2.getText();
-//        } else if (ae.getSource() == b3) {
-//            b3.getText();
-//        } else if (ae.getSource() == b4) {
-//            b4.getText();
-//        } else if (ae.getSource() == b5) {
-//            b5.getText();
-//        } else if (ae.getSource() == b6) {
-//            b6.getText();
-//        } else if (ae.getSource() == b7) {
-//            b7.getText();
-//        } else if (ae.getSource() == b8) {
-//            b8.getText();
-//        } else if (ae.getSource() == b9) {
-//            b9.getText();
-//        } else if (ae.getSource() == b10) {
-//            b10.getText();
-//        } else if (ae.getSource() == b11) {
-//            b11.getText();
-//        } else if (ae.getSource() == b12) {
-//            b12.getText();
-//        } else if (ae.getSource() == b13) {
-//            b13.getText();
-//        } else if (ae.getSource() == b14) {
-//            b14.getText();
-//        } else {
-//            b15.getText();
-//        }
         }
     }
     public static void main (String[]args){
