@@ -126,7 +126,7 @@ public class Main extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == shuffle) {
-            //System.out.println("shuffle");
+            gameStatus.setVisible(false);
             int[] array = Shuffle.shuffle();
             int i = 0;
             for (Component component : gameBoard.getComponents()) {
@@ -142,19 +142,18 @@ public class Main extends JFrame implements ActionListener {
                 blankTilePosition = 15;
             }
         } else {
-
             valid = Move.validMoveCheck(ae, blankTilePosition);
 
             if (valid) {
                 blankTilePosition = Move.makeMove(ae, blankTilePosition);
             }
-
             if (WinCondition.checkIfMet(gameBoard)) {
                 gameStatus.setVisible(true);
             }
         }
     }
-    public static void main (String[]args){
+
+    public static void main(String[] args) {
         Main main = new Main();
     }
 }
