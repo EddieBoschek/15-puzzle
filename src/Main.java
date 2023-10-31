@@ -90,7 +90,10 @@ public class Main extends JFrame implements ActionListener {
 
         southPanel.setLayout(new GridBagLayout());
         gameStatus.setFont(new Font("Serif", Font.BOLD, 24));
+        gameStatus.setOpaque(true);
         gameStatus.setVisible(false);
+        gameStatus.setForeground(Color.PINK);
+        gameStatus.setBackground(Color.CYAN);
         southPanel.add(gameStatus, constraints);
 
         timer = new Timer(1000, this);
