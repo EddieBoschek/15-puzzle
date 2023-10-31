@@ -1,4 +1,5 @@
 import sprint3.Inlamningsuppgift_3.src.Move;
+import sprint3.Inlamningsuppgift_3.src.WinCondition;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -151,11 +152,47 @@ public class Main extends JFrame implements ActionListener {
             }
         } else {
 
-            valid = Move.validMoveCheck(ae, blankTilePosition);
+        valid = Move.validMoveCheck(ae, blankTilePosition);
 
-            if (valid)
-                blankTilePosition = Move.makeMove(ae, blankTilePosition);
-        }
+        if (valid)
+            blankTilePosition = Move.makeMove(ae, blankTilePosition);
+
+        WinCondition.checkIfMet(gameBoard);
+
+
+//        if (ae.getSource() == b0) {
+//            b0.getText();
+//        } else if (ae.getSource() == b1) {
+//            b1.getText();
+//        } else if (ae.getSource() == b2) {
+//            b2.getText();
+//        } else if (ae.getSource() == b3) {
+//            b3.getText();
+//        } else if (ae.getSource() == b4) {
+//            b4.getText();
+//        } else if (ae.getSource() == b5) {
+//            b5.getText();
+//        } else if (ae.getSource() == b6) {
+//            b6.getText();
+//        } else if (ae.getSource() == b7) {
+//            b7.getText();
+//        } else if (ae.getSource() == b8) {
+//            b8.getText();
+//        } else if (ae.getSource() == b9) {
+//            b9.getText();
+//        } else if (ae.getSource() == b10) {
+//            b10.getText();
+//        } else if (ae.getSource() == b11) {
+//            b11.getText();
+//        } else if (ae.getSource() == b12) {
+//            b12.getText();
+//        } else if (ae.getSource() == b13) {
+//            b13.getText();
+//        } else if (ae.getSource() == b14) {
+//            b14.getText();
+//        } else {
+//            b15.getText();
+//        }
     }
 
     public static void main(String[] args) {
