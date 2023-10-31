@@ -35,7 +35,9 @@ public class Main extends JFrame implements ActionListener {
 
     JLabel gameStatus = new JLabel("Grattis, du vann!");
     private Timer timer;
-    private final Color[] colors = {Color.GREEN, Color.CYAN, Color.PINK, Color.MAGENTA};
+    Color customPurple = new Color(128, 0, 255);
+    Color customOrange = new Color(255, 175, 0);
+    private final Color[] colors = {customOrange, Color.GREEN, customPurple, Color.MAGENTA};
     private int colorIndexF = 0;
     private int colorIndexB = 2;
 
@@ -89,11 +91,11 @@ public class Main extends JFrame implements ActionListener {
         northPanel.add(shuffle, constraints);
 
         southPanel.setLayout(new GridBagLayout());
-        gameStatus.setFont(new Font("Serif", Font.BOLD, 24));
+        gameStatus.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         gameStatus.setOpaque(true);
         gameStatus.setVisible(false);
-        gameStatus.setForeground(Color.PINK);
-        gameStatus.setBackground(Color.CYAN);
+        gameStatus.setForeground(Color.MAGENTA);
+        gameStatus.setBackground(Color.GREEN);
         southPanel.add(gameStatus, constraints);
 
         timer = new Timer(1000, this);
