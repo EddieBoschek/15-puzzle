@@ -33,7 +33,7 @@ public class Main extends JFrame implements ActionListener {
     JButton b14 = new JButton("15");
     JButton b15 = new JButton();
 
-    JLabel gameStatus = new JLabel();
+    JLabel gameStatus = new JLabel("Grattis, du vann!");
 
     public Main() {
 
@@ -41,16 +41,6 @@ public class Main extends JFrame implements ActionListener {
 
         this.add(masterPanel);
         masterPanel.setLayout(new BorderLayout());
-
-
-        /*b0.setActionCommand("0"); b1.setActionCommand("1");
-        b2.setActionCommand("2"); b3.setActionCommand("3");
-        b4.setActionCommand("4"); b5.setActionCommand("5");
-        b6.setActionCommand("6"); b7.setActionCommand("7");
-        b8.setActionCommand("8"); b9.setActionCommand("9");
-        b10.setActionCommand("10"); b11.setActionCommand("11");
-        b12.setActionCommand("12"); b13.setActionCommand("13");
-        b14.setActionCommand("14"); b15.setActionCommand("15");*/
 
         LineBorder border = new LineBorder(Color.RED, 10);
 
@@ -94,6 +84,11 @@ public class Main extends JFrame implements ActionListener {
 
         northPanel.add(shuffle, constraints);
 
+        southPanel.setLayout(new GridBagLayout());
+        gameStatus.setForeground(Color.GREEN);
+        gameStatus.setVisible(false);
+        southPanel.add(gameStatus, constraints);
+
         masterPanel.add(gameBoard, BorderLayout.CENTER);
         masterPanel.add(westPanel, BorderLayout.WEST);
         masterPanel.add(eastPanel, BorderLayout.EAST);
@@ -116,6 +111,9 @@ public class Main extends JFrame implements ActionListener {
         b13.addActionListener(this);
         b14.addActionListener(this);
         b15.addActionListener(this);
+        shuffle.addActionListener(this);
+
+        shuffle.doClick();
 
         setSize(600, 600);
         //pack();
@@ -129,50 +127,38 @@ public class Main extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == shuffle) {
+            gameStatus.setVisible(false);
+            int[] array = Shuffle.shuffle();
+            int i = 0;
+            for (Component component : gameBoard.getComponents()) {
+                if (component instanceof JButton) {
+                    JButton button = (JButton) component;
+                    button.setText(Integer.toString(array[i]));
+                    button.setVisible(true);
+                    button.revalidate();
+                    button.repaint();
+                    i++;
+                }
+                b15.setVisible(false);
+                blankTilePosition = 15;
+            }
+        } else {
+//            valid = Move.validMoveCheck(ae, blankTilePosition);
+//
+//            if (valid) {
+//                blankTilePosition = Move.makeMove(ae, blankTilePosition);
+//            }
+//            else
+                blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);
 
-        valid = Move.validMoveCheck(ae, blankTilePosition);
-
-        if (valid)
-            blankTilePosition = Move.makeMove(ae, blankTilePosition);
-
-        WinCondition.checkIfMet(gameBoard);
 
 
-//        if (ae.getSource() == b0) {
-//            b0.getText();
-//        } else if (ae.getSource() == b1) {
-//            b1.getText();
-//        } else if (ae.getSource() == b2) {
-//            b2.getText();
-//        } else if (ae.getSource() == b3) {
-//            b3.getText();
-//        } else if (ae.getSource() == b4) {
-//            b4.getText();
-//        } else if (ae.getSource() == b5) {
-//            b5.getText();
-//        } else if (ae.getSource() == b6) {
-//            b6.getText();
-//        } else if (ae.getSource() == b7) {
-//            b7.getText();
-//        } else if (ae.getSource() == b8) {
-//            b8.getText();
-//        } else if (ae.getSource() == b9) {
-//            b9.getText();
-//        } else if (ae.getSource() == b10) {
-//            b10.getText();
-//        } else if (ae.getSource() == b11) {
-//            b11.getText();
-//        } else if (ae.getSource() == b12) {
-//            b12.getText();
-//        } else if (ae.getSource() == b13) {
-//            b13.getText();
-//        } else if (ae.getSource() == b14) {
-//            b14.getText();
-//        } else {
-//            b15.getText();
-//        }
+            if (WinCondition.checkIfMet(gameBoard)) {
+                gameStatus.setVisible(true);
+            }
+        }
     }
-
     public static void main(String[] args) {
         Main main = new Main();
     }
