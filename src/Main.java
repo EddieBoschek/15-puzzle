@@ -154,10 +154,13 @@ public class Main extends JFrame implements ActionListener {
 
             valid = Move.validMoveCheck(ae, blankTilePosition);
 
-            if (valid)
+            if (valid) {
                 blankTilePosition = Move.makeMove(ae, blankTilePosition);
+            }
 
-            WinCondition.checkIfMet(gameBoard);
+            if (WinCondition.checkIfMet(gameBoard)) {
+                gameStatus.setVisible(true);
+            }
 
 
 //        if (ae.getSource() == b0) {
