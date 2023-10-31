@@ -152,12 +152,12 @@ public class Main extends JFrame implements ActionListener {
             }
         } else {
 
-        valid = Move.validMoveCheck(ae, blankTilePosition);
+            valid = Move.validMoveCheck(ae, blankTilePosition);
 
-        if (valid)
-            blankTilePosition = Move.makeMove(ae, blankTilePosition);
+            if (valid)
+                blankTilePosition = Move.makeMove(ae, blankTilePosition);
 
-        WinCondition.checkIfMet(gameBoard);
+            WinCondition.checkIfMet(gameBoard);
 
 
 //        if (ae.getSource() == b0) {
@@ -193,9 +193,9 @@ public class Main extends JFrame implements ActionListener {
 //        } else {
 //            b15.getText();
 //        }
+        }
     }
-
-    public static void main(String[] args) {
+    public static void main (String[]args){
         Main main = new Main();
     }
 }
