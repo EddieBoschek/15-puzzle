@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class WinCondition {
 
-    public static void checkIfMet(JPanel gameBoard) {
+    public static boolean checkIfMet(JPanel gameBoard) {
         JButton[] buttonArray = new JButton[16];
         boolean win = true;
 
@@ -20,11 +20,6 @@ public class WinCondition {
                 break;
             }
         }
-        if (win) {
-            System.out.println("Du vann!");
-        }
+        return win;
     }
-
-
-
 }
