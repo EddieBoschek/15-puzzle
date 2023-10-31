@@ -150,6 +150,7 @@ public class Main extends JFrame implements ActionListener {
 
         WinCondition.checkIfMet(gameBoard);
         }
+>>>>>>>>> Temporary merge branch 2
     }
     public static void main(String[] args) {
         Main main = new Main();
