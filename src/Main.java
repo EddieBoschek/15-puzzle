@@ -113,6 +113,8 @@ public class Main extends JFrame implements ActionListener {
         b15.addActionListener(this);
         shuffle.addActionListener(this);
 
+        shuffle.doClick();
+
         setSize(600, 600);
         //pack();
         setVisible(true);
