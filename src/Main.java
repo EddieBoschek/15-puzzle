@@ -34,6 +34,10 @@ public class Main extends JFrame implements ActionListener {
     JButton b15 = new JButton();
 
     JLabel gameStatus = new JLabel("Grattis, du vann!");
+    private Timer timer;
+    private final Color[] colors = {Color.GREEN, Color.CYAN, Color.PINK, Color.MAGENTA};
+    private int colorIndexF = 0;
+    private int colorIndexB = 2;
 
     public Main() {
 
@@ -85,9 +89,11 @@ public class Main extends JFrame implements ActionListener {
         northPanel.add(shuffle, constraints);
 
         southPanel.setLayout(new GridBagLayout());
-        gameStatus.setForeground(Color.GREEN);
+        gameStatus.setFont(new Font("Serif", Font.BOLD, 24));
         gameStatus.setVisible(false);
         southPanel.add(gameStatus, constraints);
+
+        timer = new Timer(1000, this);
 
         masterPanel.add(gameBoard, BorderLayout.CENTER);
         masterPanel.add(westPanel, BorderLayout.WEST);
@@ -113,7 +119,7 @@ public class Main extends JFrame implements ActionListener {
         b15.addActionListener(this);
         shuffle.addActionListener(this);
 
-        shuffle.doClick();
+        //shuffle.doClick();
 
         setSize(600, 600);
         //pack();
@@ -140,17 +146,26 @@ public class Main extends JFrame implements ActionListener {
                     button.repaint();
                     i++;
                 }
+                timer.stop();
                 b15.setVisible(false);
                 blankTilePosition = 15;
             }
+        } else if (ae.getSource() == timer) {
+            gameStatus.setForeground(colors[colorIndexF]);
+            gameStatus.setBackground(colors[colorIndexB]);
+            colorIndexF = (colorIndexF + 1) % colors.length;
+            colorIndexB = (colorIndexB + 1) % colors.length;
         } else {
-            valid = Move.validMoveCheck(ae, blankTilePosition);
+            if (!timer.isRunning()) {
+                valid = Move.validMoveCheck(ae, blankTilePosition);
 
-            if (valid) {
-                blankTilePosition = Move.makeMove(ae, blankTilePosition);
-            }
-            if (WinCondition.checkIfMet(gameBoard)) {
-                gameStatus.setVisible(true);
+                if (valid) {
+                    blankTilePosition = Move.makeMove(ae, blankTilePosition);
+                }
+                if (WinCondition.checkIfMet(gameBoard)) {
+                    gameStatus.setVisible(true);
+                    timer.start();
+                }
             }
         }
     }
