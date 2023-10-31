@@ -113,8 +113,6 @@ public class Main extends JFrame implements ActionListener {
         b15.addActionListener(this);
         shuffle.addActionListener(this);
 
-        shuffle.doClick();
-
         setSize(600, 600);
         //pack();
         setVisible(true);
@@ -144,21 +142,17 @@ public class Main extends JFrame implements ActionListener {
                 blankTilePosition = 15;
             }
         } else {
-//            valid = Move.validMoveCheck(ae, blankTilePosition);
-//
-//            if (valid) {
-//                blankTilePosition = Move.makeMove(ae, blankTilePosition);
-//            }
-//            else
-                blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);
+            valid = Move.validMoveCheck(ae, blankTilePosition);
 
-
-
+            if (valid) {
+                blankTilePosition = Move.makeMove(ae, blankTilePosition);
+            }
             if (WinCondition.checkIfMet(gameBoard)) {
                 gameStatus.setVisible(true);
             }
         }
     }
+
     public static void main(String[] args) {
         Main main = new Main();
     }
