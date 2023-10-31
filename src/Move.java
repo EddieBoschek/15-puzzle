@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 
 public class Move {
 
-
     public static boolean validMoveCheck(ActionEvent e, int blankTilePosition) {
         boolean valid = false;
         JButton pressedButton = (JButton) e.getSource();

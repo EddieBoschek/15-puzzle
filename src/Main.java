@@ -147,8 +147,6 @@ public class Main extends JFrame implements ActionListener {
                     JButton button = (JButton) component;
                     button.setText(Integer.toString(array[i]));
                     button.setVisible(true);
-                    button.revalidate();
-                    button.repaint();
                     i++;
                 }
                 timer.stop();
