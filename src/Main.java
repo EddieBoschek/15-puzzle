@@ -144,10 +144,13 @@ public class Main extends JFrame implements ActionListener {
 
             valid = Move.validMoveCheck(ae, blankTilePosition);
 
-        if (valid)
-            blankTilePosition = Move.makeMove(ae, blankTilePosition);
+            if (valid) {
+                blankTilePosition = Move.makeMove(ae, blankTilePosition);
+            }
 
-        WinCondition.checkIfMet(gameBoard);
+            if (WinCondition.checkIfMet(gameBoard)) {
+                gameStatus.setVisible(true);
+            }
         }
     }
     public static void main(String[] args) {
