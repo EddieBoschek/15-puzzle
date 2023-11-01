@@ -100,7 +100,7 @@ public class Main extends JFrame implements ActionListener {
 
         southPanel.add(gameStatus, constraints);
 
-        timer = new Timer(1000, this);
+        timer = new Timer(800, this);
 
         masterPanel.add(gameBoard, BorderLayout.CENTER);
         masterPanel.add(westPanel, BorderLayout.WEST);
@@ -126,7 +126,7 @@ public class Main extends JFrame implements ActionListener {
         b15.addActionListener(this);
         shuffle.addActionListener(this);
 
-        //shuffle.doClick();
+        shuffle.doClick();
 
         setSize(600, 600);
         //pack();
@@ -145,8 +145,7 @@ public class Main extends JFrame implements ActionListener {
             int[] array = Shuffle.shuffle();
             int i = 0;
             for (Component component : gameBoard.getComponents()) {
-                if (component instanceof JButton) {
-                    JButton button = (JButton) component;
+                if (component instanceof JButton button) {
                     button.setText(Integer.toString(array[i]));
                     button.setVisible(true);
                     i++;
