@@ -145,11 +145,7 @@ public class Main extends JFrame implements ActionListener {
             shiftColor.shiftColor(gameStatus);
         } else {
             if (!timer.isRunning()) {
-                valid = Move.validMoveCheck(ae, blankTilePosition);
-
-                if (valid) {
-                    blankTilePosition = Move.makeMove(ae, blankTilePosition);
-                }
+                blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);
                 if (WinCondition.checkIfMet(gameBoard)) {
                     gameStatus.setVisible(true);
                     timer.start();
@@ -157,6 +153,7 @@ public class Main extends JFrame implements ActionListener {
             }
         }
     }
+
     public static void main(String[] args) {
         Main main = new Main();
     }
