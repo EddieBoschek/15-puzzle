@@ -131,7 +131,6 @@ public class Main extends JFrame implements ActionListener {
     }
 
     private int blankTilePosition = 15;
-    private boolean valid;
 
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -153,7 +152,6 @@ public class Main extends JFrame implements ActionListener {
             }
         }
     }
-
     public static void main(String[] args) {
         Main main = new Main();
     }
