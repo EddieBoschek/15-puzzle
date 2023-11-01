@@ -142,18 +142,10 @@ public class Main extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == shuffle) {
             gameStatus.setVisible(false);
-            int[] array = Shuffle.shuffle();
-            int i = 0;
-            for (Component component : gameBoard.getComponents()) {
-                if (component instanceof JButton button) {
-                    button.setText(Integer.toString(array[i]));
-                    button.setVisible(true);
-                    i++;
-                }
-                timer.stop();
-                b15.setVisible(false);
-                blankTilePosition = 15;
-            }
+            timer.stop();
+            Shuffle.shuffle(gameBoard);
+            b15.setVisible(false);
+            blankTilePosition = 15;
         } else if (ae.getSource() == timer) {
             gameStatus.setForeground(colors[colorIndexF]);
             gameStatus.setBackground(colors[colorIndexB]);
