@@ -30,5 +30,15 @@ public class Shuffle {
                 i++;
             }
         }
+        JButton blankTile = (JButton) gameBoard.getComponent(15);
+        blankTile.setVisible(false);
     }
 }
+
+//b15.setVisible(false);
+
+/*
+JButton pressedButton = (JButton) e.getSource();
+        JPanel gameBoard = (JPanel) pressedButton.getParent();
+        JButton blankTile = (JButton) gameBoard.getComponent(blankTilePosition);
+ */
