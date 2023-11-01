@@ -59,9 +59,7 @@ public class Move {
     public static int moveCheckAndMaker(ActionEvent e, int blankTilePosition) {
 
         JButton pressedButton = (JButton) e.getSource();
-        int x = (pressedButton.getBounds().x - 10) / 90;
-        int y = (pressedButton.getBounds().y - 10) / 84;
-        int buttonPosition = 4 * y + x;
+        int buttonPosition = Integer.parseInt(pressedButton.getActionCommand());
         int howManyMoves = 0;
         int removal = 0;
         JPanel gameBoard = (JPanel) pressedButton.getParent();
