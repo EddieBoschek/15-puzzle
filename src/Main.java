@@ -35,11 +35,6 @@ public class Main extends JFrame implements ActionListener {
 
     private JLabel gameStatus = new JLabel("Grattis, du vann!");
     private Timer timer;
-    private Color customPurple = new Color(128, 0, 255);
-    private Color customOrange = new Color(255, 175, 0);
-    private Color[] colors = {customOrange, Color.GREEN, customPurple, Color.MAGENTA};
-    private int colorIndexF = 0;
-    private int colorIndexB = 2;
 
     public Main() {
 
@@ -147,10 +142,7 @@ public class Main extends JFrame implements ActionListener {
             b15.setVisible(false);
             blankTilePosition = 15;
         } else if (ae.getSource() == timer) {
-            gameStatus.setForeground(colors[colorIndexF]);
-            gameStatus.setBackground(colors[colorIndexB]);
-            colorIndexF = (colorIndexF + 1) % colors.length;
-            colorIndexB = (colorIndexB + 1) % colors.length;
+            shiftColor.shiftColor(gameStatus);
         } else {
             if (!timer.isRunning()) {
                 valid = Move.validMoveCheck(ae, blankTilePosition);
