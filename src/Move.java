@@ -9,8 +9,9 @@ public class Move {
     public static boolean validMoveCheck(ActionEvent e, int blankTilePosition) {
         boolean valid = false;
         JButton pressedButton = (JButton) e.getSource();
-        int x = (pressedButton.getBounds().x - 10) / 90;
-        int y = (pressedButton.getBounds().y - 10) / 84;
+        JPanel gameBoard = (JPanel) pressedButton.getParent();
+        int x = (pressedButton.getBounds().x-10)/90;
+        int y = (pressedButton.getBounds().y-10)/84;
         int buttonPosition = 4 * y + x;
 
         int leftButton = -1;
@@ -27,23 +28,22 @@ public class Move {
         if (y != 3)
             downButton = buttonPosition + 4;
 
-        int[] buttonArray = {leftButton, rightButton, upButton, downButton};
+        int[] buttonArray = {leftButton,rightButton,upButton,downButton};
 
-        for (int button : buttonArray)
+        for (int button: buttonArray)
             if (button == blankTilePosition)
                 valid = true;
 
 
         return valid;
     }
-
     public static int makeMove(ActionEvent e, int blankTilePosition) {
         JButton pressedButton = (JButton) e.getSource();
         JPanel gameBoard = (JPanel) pressedButton.getParent();
         JButton blankTile = (JButton) gameBoard.getComponent(blankTilePosition);
 
-        int x = (pressedButton.getBounds().x - 10) / 90;
-        int y = (pressedButton.getBounds().y - 10) / 84;
+        int x = (pressedButton.getBounds().x-10)/90;
+        int y = (pressedButton.getBounds().y-10)/84;
         int pressedButtonPosition = 4 * y + x;
 
         blankTile.setText(pressedButton.getText());

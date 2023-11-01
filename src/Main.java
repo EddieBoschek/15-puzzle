@@ -8,41 +8,47 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main extends JFrame implements ActionListener {
-    JPanel masterPanel = new JPanel();
-    JPanel gameBoard = new JPanel();
-    JPanel westPanel = new JPanel();
-    JPanel eastPanel = new JPanel();
-    JPanel northPanel = new JPanel();
-    JPanel southPanel = new JPanel();
+    private JPanel masterPanel = new JPanel();
+    private JPanel gameBoard = new JPanel();
+    private JPanel westPanel = new JPanel();
+    private JPanel eastPanel = new JPanel();
+    private JPanel northPanel = new JPanel();
+    private JPanel southPanel = new JPanel();
 
-    JButton shuffle = new JButton("Nytt spel");
-    JButton b0 = new JButton("1");
-    JButton b1 = new JButton("2");
-    JButton b2 = new JButton("3");
-    JButton b3 = new JButton("4");
-    JButton b4 = new JButton("5");
-    JButton b5 = new JButton("6");
-    JButton b6 = new JButton("7");
-    JButton b7 = new JButton("8");
-    JButton b8 = new JButton("9");
-    JButton b9 = new JButton("10");
-    JButton b10 = new JButton("11");
-    JButton b11 = new JButton("12");
-    JButton b12 = new JButton("13");
-    JButton b13 = new JButton("14");
-    JButton b14 = new JButton("15");
-    JButton b15 = new JButton();
+    private JButton shuffle = new JButton("Nytt spel");
+    private JButton b0 = new JButton("1");
+    private JButton b1 = new JButton("2");
+    private JButton b2 = new JButton("3");
+    private JButton b3 = new JButton("4");
+    private JButton b4 = new JButton("5");
+    private JButton b5 = new JButton("6");
+    private JButton b6 = new JButton("7");
+    private JButton b7 = new JButton("8");
+    private JButton b8 = new JButton("9");
+    private JButton b9 = new JButton("10");
+    private JButton b10 = new JButton("11");
+    private JButton b11 = new JButton("12");
+    private JButton b12 = new JButton("13");
+    private JButton b13 = new JButton("14");
+    private JButton b14 = new JButton("15");
+    private JButton b15 = new JButton("0");
 
-    JLabel gameStatus = new JLabel("Grattis, du vann!");
+    private JLabel gameStatus = new JLabel("Grattis, du vann!");
+    private Timer timer;
+    private Color customPurple = new Color(128, 0, 255);
+    private Color customOrange = new Color(255, 175, 0);
+    private Color[] colors = {customOrange, Color.GREEN, customPurple, Color.MAGENTA};
+    private int colorIndexF = 0;
+    private int colorIndexB = 2;
 
     public Main() {
-
-        b15.setVisible(false);
 
         this.add(masterPanel);
         masterPanel.setLayout(new BorderLayout());
 
         LineBorder border = new LineBorder(Color.RED, 10);
+
+        b15.setVisible(false);
 
         gameBoard.setLayout(new GridLayout(4, 4));
         gameBoard.setBackground(Color.RED);
@@ -85,9 +91,16 @@ public class Main extends JFrame implements ActionListener {
         northPanel.add(shuffle, constraints);
 
         southPanel.setLayout(new GridBagLayout());
-        gameStatus.setForeground(Color.GREEN);
+
+        gameStatus.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+        gameStatus.setOpaque(true);
         gameStatus.setVisible(false);
+        gameStatus.setForeground(Color.MAGENTA);
+        gameStatus.setBackground(Color.GREEN);
+
         southPanel.add(gameStatus, constraints);
+
+        timer = new Timer(800, this);
 
         masterPanel.add(gameBoard, BorderLayout.CENTER);
         masterPanel.add(westPanel, BorderLayout.WEST);
@@ -113,6 +126,8 @@ public class Main extends JFrame implements ActionListener {
         b15.addActionListener(this);
         shuffle.addActionListener(this);
 
+        shuffle.doClick();
+
         setSize(600, 600);
         //pack();
         setVisible(true);
@@ -120,37 +135,29 @@ public class Main extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    int blankTilePosition = 15;
-    boolean valid;
+    private int blankTilePosition = 15;
+    private boolean valid;
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == shuffle) {
             gameStatus.setVisible(false);
-            int[] array = Shuffle.shuffle();
-            int i = 0;
-            for (Component component : gameBoard.getComponents()) {
-                if (component instanceof JButton) {
-                    JButton button = (JButton) component;
-                    button.setText(Integer.toString(array[i]));
-                    button.setVisible(true);
-                    button.revalidate();
-                    button.repaint();
-                    i++;
-                }
-                b15.setVisible(false);
-                blankTilePosition = 15;
-            }
+            timer.stop();
+            Shuffle.shuffle(gameBoard);
+            b15.setVisible(false);
+            blankTilePosition = 15;
+        } else if (ae.getSource() == timer) {
+            gameStatus.setForeground(colors[colorIndexF]);
+            gameStatus.setBackground(colors[colorIndexB]);
+            colorIndexF = (colorIndexF + 1) % colors.length;
+            colorIndexB = (colorIndexB + 1) % colors.length;
         } else {
-//            valid = Move.validMoveCheck(ae, blankTilePosition);
-//
-//            if (valid) {
-//                blankTilePosition = Move.makeMove(ae, blankTilePosition);
-//        }
-            blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);
-
-            if (WinCondition.checkIfMet(gameBoard)) {
-                gameStatus.setVisible(true);
+            if (!timer.isRunning()) {
+                blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);
+                if (WinCondition.checkIfMet(gameBoard)) {
+                    gameStatus.setVisible(true);
+                    timer.start();
+                }
             }
         }
     }
