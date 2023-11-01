@@ -140,7 +140,7 @@ public class Main extends JFrame implements ActionListener {
             Shuffle.shuffle(gameBoard);
             blankTilePosition = 15;
         } else if (ae.getSource() == timer) {
-            shiftColor.shiftColor(gameStatus);
+            ShiftColor.shiftColor(gameStatus);
         } else {
             if (!timer.isRunning()) {
                 blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);

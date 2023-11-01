@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class shiftColor {
+public class ShiftColor {
     private static Color customPurple = new Color(128, 0, 255);
     private static Color customOrange = new Color(255, 175, 0);
     private static Color[] colors = {customOrange, Color.GREEN, customPurple, Color.MAGENTA};
