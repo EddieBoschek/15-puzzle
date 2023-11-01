@@ -144,7 +144,6 @@ public class Main extends JFrame implements ActionListener {
             gameStatus.setVisible(false);
             timer.stop();
             Shuffle.shuffle(gameBoard);
-            b15.setVisible(false);
             blankTilePosition = 15;
         } else if (ae.getSource() == timer) {
             gameStatus.setForeground(colors[colorIndexF]);
