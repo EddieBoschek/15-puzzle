@@ -1,4 +1,4 @@
-package sprint3.Inlamningsuppgift_3.src;
+//package sprint3.Inlamningsuppgift_3.src;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -56,7 +56,7 @@ public class Move {
         return blankTilePosition;
     }
 
-    public static int moveCheckAndMaker(ActionEvent e, int blankTilePosition) {
+    public static void moveCheckAndMaker(ActionEvent e, int blankTilePosition) {
 
         JButton pressedButton = (JButton) e.getSource();
         int buttonPosition = Integer.parseInt(pressedButton.getActionCommand());
@@ -88,8 +88,7 @@ public class Move {
                 nextButton.setVisible(false);
                 blankTile = nextButton;
             }
-            blankTilePosition = buttonPosition;
+            Main.setBlankTilePosition(buttonPosition);
         }
-        return blankTilePosition;
     }
 }

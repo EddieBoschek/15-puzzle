@@ -1,5 +1,5 @@
-import sprint3.Inlamningsuppgift_3.src.Move;
-import sprint3.Inlamningsuppgift_3.src.WinCondition;
+//import sprint3.Inlamningsuppgift_3.src.Move;
+//import sprint3.Inlamningsuppgift_3.src.WinCondition;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -43,27 +43,19 @@ public class Main extends JFrame implements ActionListener {
 
         LineBorder border = new LineBorder(Color.RED, 10);
 
-        b15.setVisible(false);
-
         gameBoard.setLayout(new GridLayout(4, 4));
         gameBoard.setBackground(Color.RED);
         gameBoard.setBorder(border);
-        gameBoard.add(b0);
-        gameBoard.add(b1);
-        gameBoard.add(b2);
-        gameBoard.add(b3);
-        gameBoard.add(b4);
-        gameBoard.add(b5);
-        gameBoard.add(b6);
-        gameBoard.add(b7);
-        gameBoard.add(b8);
-        gameBoard.add(b9);
-        gameBoard.add(b10);
-        gameBoard.add(b11);
-        gameBoard.add(b12);
-        gameBoard.add(b13);
-        gameBoard.add(b14);
-        gameBoard.add(b15);
+        gameBoard.add(b0);  gameBoard.add(b1);
+        gameBoard.add(b2);  gameBoard.add(b3);
+        gameBoard.add(b4);  gameBoard.add(b5);
+        gameBoard.add(b6);  gameBoard.add(b7);
+        gameBoard.add(b8);  gameBoard.add(b9);
+        gameBoard.add(b10); gameBoard.add(b11);
+        gameBoard.add(b12); gameBoard.add(b13);
+        gameBoard.add(b14); gameBoard.add(b15);
+
+        b15.setVisible(false);
 
         westPanel.setPreferredSize(new Dimension(100, 100));
         eastPanel.setPreferredSize(new Dimension(100, 100));
@@ -103,29 +95,21 @@ public class Main extends JFrame implements ActionListener {
         masterPanel.add(northPanel, BorderLayout.NORTH);
         masterPanel.add(southPanel, BorderLayout.SOUTH);
 
-        b0.addActionListener(this);
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-        b3.addActionListener(this);
-        b4.addActionListener(this);
-        b5.addActionListener(this);
-        b6.addActionListener(this);
-        b7.addActionListener(this);
-        b8.addActionListener(this);
-        b9.addActionListener(this);
-        b10.addActionListener(this);
-        b11.addActionListener(this);
-        b12.addActionListener(this);
-        b13.addActionListener(this);
-        b14.addActionListener(this);
-        b15.addActionListener(this);
+        b0.addActionListener(this);  b1.addActionListener(this);
+        b2.addActionListener(this);  b3.addActionListener(this);
+        b4.addActionListener(this);  b5.addActionListener(this);
+        b6.addActionListener(this);  b7.addActionListener(this);
+        b8.addActionListener(this);  b9.addActionListener(this);
+        b10.addActionListener(this); b11.addActionListener(this);
+        b12.addActionListener(this); b13.addActionListener(this);
+        b14.addActionListener(this); b15.addActionListener(this);
         shuffle.addActionListener(this);
 
-        b0.setActionCommand("0"); b1.setActionCommand("1");
-        b2.setActionCommand("2"); b3.setActionCommand("3");
-        b4.setActionCommand("4"); b5.setActionCommand("5");
-        b6.setActionCommand("6"); b7.setActionCommand("7");
-        b8.setActionCommand("8"); b9.setActionCommand("9");
+        b0.setActionCommand("0");   b1.setActionCommand("1");
+        b2.setActionCommand("2");   b3.setActionCommand("3");
+        b4.setActionCommand("4");   b5.setActionCommand("5");
+        b6.setActionCommand("6");   b7.setActionCommand("7");
+        b8.setActionCommand("8");   b9.setActionCommand("9");
         b10.setActionCommand("10"); b11.setActionCommand("11");
         b12.setActionCommand("12"); b13.setActionCommand("13");
         b14.setActionCommand("14"); b15.setActionCommand("15");
@@ -139,25 +123,28 @@ public class Main extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    private int blankTilePosition = 15;
-    
+    private static int blankTilePosition = 15;
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == shuffle) {
-            gameStatus.setVisible(false);
-            timer.stop();
-            Shuffle.shuffle(gameBoard);
-            blankTilePosition = 15;
-        } else if (!timer.isRunning()) {
-            blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);
+        if (ae.getSource() != shuffle && !timer.isRunning()) {
+            Move.moveCheckAndMaker(ae, blankTilePosition);
             if (WinCondition.checkIfMet(gameBoard)) {
                 gameStatus.setVisible(true);
                 timer.start();
             }
+        } else if (ae.getSource() == shuffle) {
+                gameStatus.setVisible(false);
+                timer.stop();
+                Shuffle.shuffle(gameBoard);
         } else {
             ShiftColor.shiftColor(gameStatus);
         }
     }
+    public static void setBlankTilePosition(int blankTilePosition) {
+        Main.blankTilePosition = blankTilePosition;
+    }
+
     public static void main(String[] args) {
         Main main = new Main();
     }

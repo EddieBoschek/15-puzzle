@@ -32,5 +32,6 @@ public class Shuffle {
         }
         JButton blankTile = (JButton) gameBoard.getComponent(15);
         blankTile.setVisible(false);
+        Main.setBlankTilePosition(15);
     }
 }
