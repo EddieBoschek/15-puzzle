@@ -148,16 +148,14 @@ public class Main extends JFrame implements ActionListener {
             timer.stop();
             Shuffle.shuffle(gameBoard);
             blankTilePosition = 15;
-        } else if (ae.getSource() == timer) {
-            ShiftColor.shiftColor(gameStatus);
-        } else {
-            if (!timer.isRunning()) {
-                blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);
-                if (WinCondition.checkIfMet(gameBoard)) {
-                    gameStatus.setVisible(true);
-                    timer.start();
-                }
+        } else if (!timer.isRunning()) {
+            blankTilePosition = Move.moveCheckAndMaker(ae, blankTilePosition);
+            if (WinCondition.checkIfMet(gameBoard)) {
+                gameStatus.setVisible(true);
+                timer.start();
             }
+        } else {
+            ShiftColor.shiftColor(gameStatus);
         }
     }
     public static void main(String[] args) {
