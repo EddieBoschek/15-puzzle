@@ -131,7 +131,7 @@ public class Main extends JFrame implements ActionListener {
     }
 
     private int blankTilePosition = 15;
-
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == shuffle) {
