@@ -1,6 +1,3 @@
-//import sprint3.Inlamningsuppgift_3.src.Move;
-//import sprint3.Inlamningsuppgift_3.src.WinCondition;
-
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -31,7 +28,7 @@ public class Main extends JFrame implements ActionListener {
     private JButton b12 = new JButton("13");
     private JButton b13 = new JButton("14");
     private JButton b14 = new JButton("15");
-    private JButton b15 = new JButton("0");
+    private JButton b15 = new JButton();
 
     private JLabel gameStatus = new JLabel("Grattis, du vann!");
     private Timer timer;
@@ -114,7 +111,7 @@ public class Main extends JFrame implements ActionListener {
         b12.setActionCommand("12"); b13.setActionCommand("13");
         b14.setActionCommand("14"); b15.setActionCommand("15");
 
-        shuffle.doClick();
+        //shuffle.doClick();
 
         setSize(600, 600);
         //pack();

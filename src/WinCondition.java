@@ -1,5 +1,3 @@
-//package sprint3.Inlamningsuppgift_3.src;
-
 import javax.swing.*;
 
 public class WinCondition {
