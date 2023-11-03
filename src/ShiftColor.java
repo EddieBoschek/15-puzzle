@@ -8,10 +8,9 @@ public class ShiftColor {
     private static int colorIndexF = 0;
     private static int colorIndexB = 2;
 
-    public static void shiftColor(JLabel gameStatus) {
-
-        gameStatus.setForeground(colors[colorIndexF]);
-        gameStatus.setBackground(colors[colorIndexB]);
+    public static void shiftColor(JLabel gameComplete) {
+        gameComplete.setForeground(colors[colorIndexF]);
+        gameComplete.setBackground(colors[colorIndexB]);
         colorIndexF = (colorIndexF + 1) % colors.length;
         colorIndexB = (colorIndexB + 1) % colors.length;
     }

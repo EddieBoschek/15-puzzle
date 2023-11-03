@@ -30,7 +30,7 @@ public class Main extends JFrame implements ActionListener {
     private JButton b14 = new JButton("15");
     private JButton b15 = new JButton();
 
-    private JLabel gameStatus = new JLabel("Grattis, du vann!");
+    private JLabel gameComplete = new JLabel("Grattis, du vann!");
     private Timer timer;
 
     public Main() {
@@ -76,13 +76,13 @@ public class Main extends JFrame implements ActionListener {
 
         southPanel.setLayout(new GridBagLayout());
 
-        gameStatus.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
-        gameStatus.setOpaque(true);
-        gameStatus.setVisible(false);
-        gameStatus.setForeground(Color.MAGENTA);
-        gameStatus.setBackground(Color.GREEN);
+        gameComplete.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+        gameComplete.setOpaque(true);
+        gameComplete.setVisible(false);
+        gameComplete.setForeground(Color.MAGENTA);
+        gameComplete.setBackground(Color.GREEN);
 
-        southPanel.add(gameStatus, constraints);
+        southPanel.add(gameComplete, constraints);
 
         timer = new Timer(800, this);
 
@@ -127,15 +127,15 @@ public class Main extends JFrame implements ActionListener {
         if (ae.getSource() != shuffle && !timer.isRunning()) {
             Move.moveCheckAndMaker(ae, blankTilePosition);
             if (WinCondition.checkIfMet(gameBoard)) {
-                gameStatus.setVisible(true);
+                gameComplete.setVisible(true);
                 timer.start();
             }
         } else if (ae.getSource() == shuffle) {
-                gameStatus.setVisible(false);
+                gameComplete.setVisible(false);
                 timer.stop();
                 Shuffle.shuffle(gameBoard);
         } else {
-            ShiftColor.shiftColor(gameStatus);
+            ShiftColor.shiftColor(gameComplete);
         }
     }
     public static void setBlankTilePosition(int blankTilePosition) {
