@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 
 public class Move {
 
-    public static void moveCheckAndMaker(ActionEvent e, int blankTilePosition) {
+    public static void checkAndMove(ActionEvent e, int blankTilePosition) {
 
         JButton pressedButton = (JButton) e.getSource();
         int buttonPosition = Integer.parseInt(pressedButton.getActionCommand());

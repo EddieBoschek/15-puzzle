@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class WinCondition {
 
-    public static boolean checkIfMet(JPanel gameBoard) {
+    public static boolean winCondition(JPanel gameBoard) {
         JButton[] buttonArray = new JButton[16];
         boolean win = true;
 

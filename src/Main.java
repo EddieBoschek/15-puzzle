@@ -111,7 +111,7 @@ public class Main extends JFrame implements ActionListener {
         b12.setActionCommand("12"); b13.setActionCommand("13");
         b14.setActionCommand("14"); b15.setActionCommand("15");
 
-        //shuffle.doClick();
+        shuffle.doClick();
 
         setSize(600, 600);
         //pack();
@@ -125,8 +125,8 @@ public class Main extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() != shuffle && !timer.isRunning()) {
-            Move.moveCheckAndMaker(ae, blankTilePosition);
-            if (WinCondition.checkIfMet(gameBoard)) {
+            Move.checkAndMove(ae, blankTilePosition);
+            if (WinCondition.winCondition(gameBoard)) {
                 gameComplete.setVisible(true);
                 timer.start();
             }
