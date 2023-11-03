@@ -32,6 +32,7 @@ public class Move {
                 blankTile.setText(nextButton.getText());
                 blankTile.setVisible(true);
                 nextButton.setVisible(false);
+                nextButton.setText("0");
                 blankTile = nextButton;
             }
             Main.setBlankTilePosition(buttonPosition);
